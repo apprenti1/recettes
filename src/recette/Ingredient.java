@@ -5,10 +5,14 @@ public class Ingredient {
     private Double quantite;
     private String unite;
 
-    public void Ingredient(String nom, Double quantite, String unite){
+    public Ingredient(String nom, Double quantite, String unite){
         setNom(nom);
         setQuantite(quantite);
         setUnite(unite);
+    }
+
+    public String afficher(){
+        return this.quantite+" "+this.unite+"\t|\t"+this.nom;
     }
 
     public String getNom() {return nom;}

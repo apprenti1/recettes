@@ -6,11 +6,21 @@ import java.util.Arrays;
 public class Recette {
     private ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
     private String title;
-    public void Recette(String titre){setTitle(titre);}
+    public Recette(String titre){setTitle(titre);}
     public void ajouterIngredient(Ingredient ingredient){this.ingredients.add(ingredient);}
+    public void supprimerIngredient(int pos){this.ingredients.remove(pos);}
     public int getNbIngredients(){return this.ingredients.size();}
     public void changeQuantiteIngredient(int position, Double quantite){this.ingredients.get(position).setQuantite(quantite);}
-    public ArrayList afficheIngredient(int position){return new ArrayList(Arrays.asList(this.ingredients.get(position).getNom(),this.ingredients.get(position).getQuantite(),this.ingredients.get(position).getUnite()));}
+    public Ingredient getIngredient(int position){return this.ingredients.get(position);}
+    public String afficheIngredient(int position){return this.ingredients.get(position).afficher();}
+    public ArrayList getRecette(){return new ArrayList(Arrays.asList(this.title,this.ingredients.clone()));}
+    public String afficheRecette(){
+        String recette = this.title+" :\n";
+        for (Ingredient ingredient:this.ingredients) {
+            recette += "\t- "+ingredient.afficher()+"\n";
+        }
+        return recette;
+    }
 
 
     //------getters&setters------//
